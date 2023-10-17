@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Book>
+@{
+    
+}
+
+<div class="container pt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <a class="btn btn-dark" href="/Book/Add">Add more</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Books</h3>
+           <table class="table table-striped table-bordered table-dark"> 
+               <thead>
+                   <tr>
+                        <th>Title</th>
+                        <th>Genre</th>
+                        <th>Isbn</th>
+                        <th>Total Pages</th>
+                        <th>Author</th>
+                        <th>Publisher</th>
+                        <th>Action</th>
+                   </tr>
+               </thead>
+               <tbody>
+                   @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Title</td>
+                            <td>@item.GenreName</td>
+                            <td>@item.Isbn</td>
+                            <td>@item.TotalPages</td>
+                            <td>@item.AuthorName</td>
+                            <td>@item.PublisherName</td>
+                            <td>
+                                <a class="btn btn-success" href="/Book/Update?id=@item.Id"><i class="bg bi-pen"></i> Edit</a>
+                                <a class="btn btn-danger" onclick="return window.confirm('Are you sure?')" href="/Book/Delete?id=@item.Id"><i class="bg bi-trash"></i> Delete</a>
+                            </td>
+                        </tr>
+                    }
+               </tbody>
+
+           </table>
+        </div>
+    </div>
+</div>
+
